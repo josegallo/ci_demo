@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 		//the view as $firstnames
 		$data['users'] = $this->model_users->getUsers();//It will be accessible in the view as $users
 		
-		$this->load->view('welcome_message', $data);//This load $data object (associative array) into 
+		$this->load->view('welcome_message.php', $data);//This load $data object (associative array) into 
 		//welcome_message page view
 	}
 
