@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		//specifies what return on the case that nothing is found
 		echo element('age', $ci_array, 'not there'). '<br/>';
 		
-		echo '<h3>random_element() examples</h3>';
+		echo '<h3>random_element() examples</h3>'; //random_element
 		$cards  = array( 9,
 				10,
 				"Jack",

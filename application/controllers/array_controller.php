@@ -19,6 +19,7 @@ class Array_controller extends CI_Controller {
 		//load models and helpers
 		$this->load->model('model_users');
 		$this->load->helper('array');
+		$this->load->helper('email');
 		
 		$data['title'] = 'Array Helper test'; //It will be accessible in the view as $title
 		$data['page_header'] = 'Array Helper trial';//It will be accessible in the view as $page_header

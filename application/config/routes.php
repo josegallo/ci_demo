@@ -50,7 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'welcome'; //it sent to the 1st page ("the home")
-$route['home'] = 'home'; //map the route home to home.php (controller)
-$route['array'] ='array';//map the route array to home.php (controller)
+//$route['home'] = 'home'; //map the route home to home.php (controller) 
+//$route['array'] ='array_view';//map the route array to array.php (controller)
+$route['email'] = 'email_view';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
