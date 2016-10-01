@@ -1,3 +1,13 @@
+######################################
+This is a demo project in CodeIgniter
+######################################
+
+In this simple project, I want to develop a simple web page using main helpers and settings.
+
+It will be neccesary to have a bbdd connected in xampp on your localserver.
+An example of this bbdd is on bbdd_example folder
+
+
 ###################
 What is CodeIgniter
 ###################
