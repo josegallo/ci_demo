@@ -49,9 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome'; //it sent to the 1st page ("the home")
+$route['default_controller'] = 'home'; //it sent to the 1st page ("the home")
 //$route['home'] = 'home'; //map the route home to home.php (controller) 
 //$route['array'] ='array_view';//map the route array to array.php (controller)
-$route['email'] = 'email_view';
+$route['html_example'] = 'home/html_helper'; //a url containing html in the 1st fragment // will be remapped to the home class and html_helper method
+$route['array_example'] = 'home/array_helper';//a url containing html in the 1st fragment // will be remapped to the home class and array_helper method
+$route['email_example'] = 'home/email_helper';//a url containing html in the 1st fragment // will be remapped to the home class and email_helper method
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
