@@ -56,7 +56,13 @@ class Home extends CI_Controller {
 		$this->load->view('html_view', $data);//This load $data object (associative array) into 
 	}
 	
-
+	public function url_helper()
+	{
+		$data['title'] = 'url_helper Title'; //It will be accessible in the view as $title
+		$data['page_header'] = 'url_helper Header';//It will be accessible in the view as $page_header
+		
+		$this->load->view('url_view', $data);//This load $data object (associative array) into 	
+	}
 	
 
 }
