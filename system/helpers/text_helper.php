@@ -562,3 +562,27 @@ if ( ! function_exists('ellipsize'))
 		return $beg.$ellipsis.$end;
 	}
 }
+
+/*------------------------Personal function -------------------------*/
+
+	function star_censor($str, $censored)// $censored is an array
+	{
+		if (! is_array($censored)) 
+		{
+			return $str;
+		}
+		
+		foreach ($censored as $badword)
+		{
+			$stars = '';
+			$badword_length = strlen($badword);
+			for ($i=0; $i < $badword_length; $i++) { 
+				$stars = $stars. '*';
+			}
+			$str = str_ireplace($badword, $stars, $str);
+		}
+		return trim($str);
+	}
+{
+	
+}

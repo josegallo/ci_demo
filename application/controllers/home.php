@@ -64,5 +64,14 @@ class Home extends CI_Controller {
 		$this->load->view('url_view', $data);//This load $data object (associative array) into 	
 	}
 	
-
+	public function text_helper()
+	{
+		//$this->load->helper('text'); here is where you can load helper or in autoload.php
+		
+		$data['title'] = 'text_helper Title'; //It will be accessible in the view as $title
+		$data['page_header'] = 'text_helper Header';//It will be accessible in the view as $page_header
+		
+		$this->load->view('text_view', $data);//This load $data object (associative array) into 	
+	}
+	
 }
