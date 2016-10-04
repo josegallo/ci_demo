@@ -74,4 +74,29 @@ class Home extends CI_Controller {
 		$this->load->view('text_view', $data);//This load $data object (associative array) into 	
 	}
 	
+	public function form_helper()
+	{
+
+		//$this->load->library('form_validation'); is allready defined on autoload libraries.
+		
+		$data['title'] = 'form_helper Title'; //It will be accessible in the view as $title
+		$data['page_header'] = 'form_helper Header';//It will be accessible in the view as $page_header
+		
+		$this->form_validation->set_rules('email','E-mail','required|trim|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'required|trim');
+		$this->form_validation->set_rules('url', 'URL', 'required');
+		
+		if ($this->form_validation->run() == FALSE) { //if the previous 3 lines runs an returns false some of them
+			$this->load->view('form_view', $data);//This load $data object (associative array) into 	
+		} else 
+		{
+			$data['email'] = $this->input->post('email');
+			$data['password'] = $this->input->post('password');
+			$data['pass_length'] = strlen($this->input->post('password'));
+			$data['url'] = $this->input->post('url');
+			$this->load->view('form_view', $data);
+		}
+		
+	}
+	
 }
