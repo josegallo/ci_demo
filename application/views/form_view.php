@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				echo "Your pasword lenght is: " . $pass_length . '<br/>';
 				echo "Form submitted from: " . $url . '<br/>';
 			} else {
-				echo validation_errors();
+				echo validation_errors(); 
 				echo form_open();
 				echo '<label for = "username">Email:</label><br/>' . form_input('email', set_value('email')) . '<br/><br/>';
 				echo '<label for = "password">Password:</label><br/>' . form_password('password', '') . '<br/><br/>';

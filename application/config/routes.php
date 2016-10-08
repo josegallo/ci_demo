@@ -57,6 +57,7 @@ $route['html_example'] = 'home/html_helper';//a url containing html_example in t
 $route['url_example'] = 'home/url_helper';//a url containing url_example in the 1st fragment // will be remapped to the home class and url_helper method
 $route['text_example'] = 'home/text_helper';//a url containing text_example in the 1st fragment // will be remapped to the home class and text_helper method
 $route['form_example'] = 'home/form_helper';//a url containing text_example in the 1st fragment // will be remapped to the home class and text_helper method
+$route['form2_example'] = 'home/form2_helper';//a url containing text_example in the 1st fragment // will be remapped to the home class and text_helper method
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

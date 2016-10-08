@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 		
 	function __construct () //construct is run first no matter what, will do  some housekeeping for us
 	{
-		parent::__construct(); //first the constructor does is call the parent's constructor
+		parent::__construct(); //first the constructor does its call to the parent's constructor
 	}	
 		
 	public function index()
@@ -86,7 +86,7 @@ class Home extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
 		$this->form_validation->set_rules('url', 'URL', 'required');
 		
-		if ($this->form_validation->run() == FALSE) { //if the previous 3 lines runs an returns false some of them
+		if ($this->form_validation->run() == FALSE) { //if the previous 3 lines runs and returns false some of them
 			$this->load->view('form_view', $data);//This load $data object (associative array) into 	
 		} else 
 		{
@@ -97,6 +97,45 @@ class Home extends CI_Controller {
 			$this->load->view('form_view', $data);
 		}
 		
+	}
+	
+	public function form2_helper()
+	{
+		//helpers needed: url, form, form_validation allreayd load in autolad.
+		$this->load->model('model_orders'); //it doesnt work if model_orders in autoload
+		
+		$this->form_validation->set_rules('email','E-mail','required|trim|valid_email'); //|xss_clean through error Unable to access an error message corresponding to your field name E-mail.(xss_clean)
+		$this->form_validation->set_rules('shirt_size', 'Shrit Shize', 'required|alpha');
+		$this->form_validation->set_rules('stripe_choice[]', 'Stripes', 'required'); //stripe_choice[] is an array
+		$this->form_validation->set_rules('terms', 'Terms and Conditions', 'callback_accept_terms'); //callback_acept_terms calls accept_terms function (bellow) 
+		$this->form_validation->set_rules('free_shipping', 'Shipping Choice', 'required|numeric|exact_length[1]');
+		
+		if ($this->form_validation->run() == FALSE) { //if the previous 3 lines runs and returns false some of them
+					
+			$data['title'] = 'form_helper_2'; //It will be accessible in the view as $title
+			$data['page_header'] = 'form_helper_2 ';//It will be accessible in the view as $page_header
+			$this->load->view('form2_view', $data);//This load $data object (associative array) into 	
+		} else {
+			$order_array  = array ( //all the things we want to put in our ddbb
+				'id' 			=> NULL,
+				'email' 			=> $this->input->post('email'),
+				'order_time'		=> $this->input->post('order_time'),
+				'shirt_size' 	=> $this->input->post('shirt_size'),
+				'stripe_choice' => implode(',',$_POST['stripe_choice']), //join the elments of array stripe_choice
+				'free_shipping' => $this->input->post('free_shipping')
+		 	);
+			$insert_order = $this->model_orders->insert_order($order_array);
+			$data['title'] = '';
+			$data['page_header'] = 'Order Success!';
+			$data['success'] = $order_array;
+			$this->load->view('form2_view', $data);
+		}
+	}
+
+	public function accept_terms($value) //custom callback function of validation set rule terms and conditions
+	{
+		if($value == 'accept'){ return TRUE;} //$value parameter is the 'term' parameter on set_rules(term and conditions)
+		else {return FALSE;}
 	}
 	
 }
