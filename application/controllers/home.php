@@ -138,4 +138,14 @@ class Home extends CI_Controller {
 		else {return FALSE;}
 	}
 	
+	public function string_helper()
+	{
+		//$this->load->helper('string'); here is where you can load helper or in autoload.php
+		
+		$data['title'] = 'string_helper Title'; //It will be accessible in the view as $title
+		$data['page_header'] = 'string_helper Header';//It will be accessible in the view as $page_header
+		
+		$this->load->view('string_view', $data);//This load $data object (associative array) into 	
+	}
+	
 }
