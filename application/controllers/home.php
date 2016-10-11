@@ -148,4 +148,13 @@ class Home extends CI_Controller {
 		$this->load->view('string_view', $data);//This load $data object (associative array) into 	
 	}
 	
+	public function login()
+	{
+		$this->load->view('includes/header');
+		$this->load->view('login_form');
+		$this->load->view('includes/footer');
+	}
+	
+	
+	
 }

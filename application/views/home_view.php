@@ -15,13 +15,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="body">
 	<?php 
 		foreach ($firstnames as $object) { //firstnames is array of objects here
-			echo $object->firstname . "<br>";
+			echo $object->first_name . "<br>";
 		}
 		
 		echo "<br/><hr/><br/>";
 		
 		foreach ($users as $object) { //objects have methods and properties
-			echo $object->firstname .  "'s email address is " . $object->email . '<br/>';
+			echo $object->first_name .  "'s email address is " . $object->email . '<br/>';
 		}
 	?>	
 	

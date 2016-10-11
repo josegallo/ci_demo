@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 /*$config['base_url'] = '';*/
-$config['base_url'] = "http://localhost/ci_demo/";
+$config['base_url'] = "http://localhost/Log_demo";
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -315,7 +315,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'qwerty';
 
 /*
 |--------------------------------------------------------------------------
