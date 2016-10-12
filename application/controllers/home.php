@@ -155,6 +155,10 @@ class Home extends CI_Controller {
 		$this->load->view('includes/footer');
 	}
 	
+	public function validate_credentials()
+	{
+		return TRUE;
+	}
 	
 	
 }
