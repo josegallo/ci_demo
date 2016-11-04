@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		echo '<br/>'. $value;
 		
 		$value = $new_array['age'] ? 'returned true' : 'returned false';
-		//if name is not null return 'returned true', else return 'returned false'
+		//if age is not null return 'returned true', else return 'returned false'
 		echo '<br/>'. $value;
 		
 	?>	

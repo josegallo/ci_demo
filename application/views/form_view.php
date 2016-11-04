@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<title><?php echo $title; ?></title>
-	<?php echo link_tag('resources/style.css'); ?>
+	<?php echo link_tag('resources/css/style-example.css'); ?>
 </head>
 <body>
 <div id="container">

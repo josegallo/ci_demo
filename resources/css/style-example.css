@@ -1,0 +1,19 @@
+html {
+	color: #000;
+	background: #0F0F0F;
+	color: white;
+}
+	
+h3, h2 {
+	font-size: 100%;
+	font-weight: normal;
+	color: green;
+}
+
+.important {
+	color: red;
+}
+
+.picture{
+	margin: 30px;
+}

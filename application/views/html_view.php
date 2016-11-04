@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="body">
 		<?php 
 			echo heading('Heading 3', 3);
-			echo heading('Heading 5', 5);
+			echo heading('Heading 5', 5); 
 			echo heading ('Important message', 4, 'class= "important"');
 			
 			echo nbs(5); //add spaces 

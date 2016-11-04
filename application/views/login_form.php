@@ -15,7 +15,7 @@
 	echo form_input('username', '','placeholder="Username" class = username');
 	echo form_password('password', '', 'placeholder="Password" class = "password"');//(name, value, additional attribrutes)
 	echo form_submit('submit', 'Login');
-	echo anchor('login/signup', 'Create Account'); //signup method of login controller
+	echo anchor('signup', 'Create Account'); //signup method of home controller
 	echo form_close();
 	 ?>
 </div> <!-- end login_form -->

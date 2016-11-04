@@ -160,5 +160,11 @@ class Home extends CI_Controller {
 		return TRUE;
 	}
 	
+	public function signup()
+	{
+		$this->load->view('includes/header');
+		//$this->load->view('signup_form');
+		$this->load->view('includes/footer');
+	}
 	
 }
