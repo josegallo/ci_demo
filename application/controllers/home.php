@@ -193,7 +193,7 @@ class Home extends CI_Controller {
 			$this->load->model('model_membership');
 			if($query = $this->model_membership->create_member())
 			{
-				$data['account_created'] = "Your account has been created!.<br/><br/>";
+				$data['account_created'] = "Your account has been created!.<br/><br/> You may login now.";
 				
 				$this->load->view('includes/header');
 				$this->load->view('login_form', $data);
@@ -209,14 +209,26 @@ class Home extends CI_Controller {
 		} //end of else
 	}
 
-	public function check_if_email_exists()
+	public function check_if_email_exists($requested_email)
 	{
-		return TRUE;
+		$this->load->model('model_membership');
+		$username_available = $this->model_membership->check_if_email_exists($requested_email);
+		if($username_available) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
 	}
 	
-	public function check_if_username_exists()
+	public function check_if_username_exists($requested_username) //custom callback function
 	{
-		return TRUE;
+		$this->load->model('model_membership');
+		$username_available = $this->model_membership->check_if_username_exists($requested_username);
+		if($username_available) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
 	}
 
 }

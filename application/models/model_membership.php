@@ -18,8 +18,34 @@
 			);
 			
 			$insert = $this->db->insert('users', $new_member_insert_data); //insert multidimensional array into table users of our db
+			//if the insertion is done $insert = TRUE
 			return $insert;
 		}
+		
+		public function check_if_username_exists($username)
+		{
+			$this->db->where('username', $username); //where username = $username
+			$result = $this->db->get('users'); //select users of previous query
+			
+			if ($result->num_rows() > 0) {
+				return FALSE; //username taken
+			} else {
+				return TRUE; //username can be reg'd
+			}
+		}
+		
+		public function check_if_email_exists($email)
+		{
+			$this->db->where('email', $email); //where email = $email
+			$result = $this->db->get('users'); //select users of previous query
+			
+			if ($result->num_rows() > 0) {
+				return FALSE; //username taken
+			} else {
+				return TRUE; //username can be reg'd
+			}
+		}
+		
 	}
 	
  ?>
