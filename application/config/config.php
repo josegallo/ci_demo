@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 /*$config['base_url'] = '';*/
-$config['base_url'] = "http://localhost/ci_demo";
+$config['base_url'] = "http://localhost/ci_demo"; //don't put a / at the end
 /*
 |--------------------------------------------------------------------------
 | Index File
