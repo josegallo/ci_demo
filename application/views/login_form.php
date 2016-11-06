@@ -6,7 +6,8 @@
 	<?php } ?>
 		
 	<?php
-	echo form_open('login/validate_credentials');
+	echo form_open('home/validate_credentials'); //points to base_url/login/validates_credentails
+	//its the same that action = base_url/login/validates_credentials
 	//$data = array(
     //    'name'          => 'username',
     //    'placeholder'   => 'username', );
