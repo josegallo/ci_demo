@@ -6,6 +6,19 @@
 			parent::__construct();//Call the model constructor
 		}
 		
+		public function validate()
+		{	
+			$this->db->where('username', $this->input->post('username')); //where username = $username
+			$this->db->where('password', md5($this->input->post('password'))); //where password = desencriptyed passwords
+			$result = $this->db->get('users'); //select users of previous query
+			//recomended to check print_r($query) to check what throughs
+			//print_r($result);
+			
+			if ($result->num_rows()  == 1) {
+				return TRUE;
+			}
+		}
+		
 		function create_member() {
 			//$username = $this->input->post('username');
 			

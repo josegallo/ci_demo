@@ -159,7 +159,24 @@ class Home extends CI_Controller {
 	
 	public function validate_credentials()
 	{
-		return TRUE;
+		$this->load->model('model_membership');
+		$query = $this->model_membership->validate();
+		
+		if ($query) { //if the user credentials validated...
+			$data = array( 
+				'username' => $this->input->post('username'),
+				'is_logged_in' => true
+			);
+			$this->session->set_userdata($data);
+
+			$this->load->view('includes/header');
+			$this->load->view('members_area', $data);
+			$this->load->view('includes/footer');
+	
+		}
+		else { //incorrect username or password
+			$this->index();
+		}
 	}
 	
 	public function signup()
@@ -168,7 +185,7 @@ class Home extends CI_Controller {
 		$this->load->view('signup_form');
 		$this->load->view('includes/footer');
 	}
-	
+
 	public function create_menber()	
 	{
 		//$this->load->library('form_validation'); //already in autoload
@@ -231,4 +248,10 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function members_area()
+	{
+		$this->load->view('includes/header');
+		$this->load->view('members_area');
+		$this->load->view('includes/footer');
+	}
 }

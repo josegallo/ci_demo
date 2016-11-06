@@ -61,6 +61,7 @@ $route['form2_example'] = 'home/form2_helper';//a url containing form2_example i
 $route['string_example'] = 'home/string_helper';//a url containing string_example in the 1st fragment // will be remapped to the home class and string_helper method
 $route['login'] = 'home/login';
 $route['signup'] = 'home/signup';
+$route['members_area'] = 'home/members_area';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
