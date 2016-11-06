@@ -78,6 +78,7 @@ class Home extends CI_Controller {
 	{
 
 		//$this->load->library('form_validation'); is allready defined on autoload libraries.
+		$this->load->helper('security');
 		
 		$data['title'] = 'form_helper Title'; //It will be accessible in the view as $title
 		$data['page_header'] = 'form_helper Header';//It will be accessible in the view as $page_header
@@ -103,8 +104,9 @@ class Home extends CI_Controller {
 	{
 		//helpers needed: url, form, form_validation allreayd load in autolad.
 		$this->load->model('model_orders'); //it doesnt work if model_orders in autoload
+		$this->load->helper('security');
 		
-		$this->form_validation->set_rules('email','E-mail','required|trim|valid_email'); //|xss_clean through error Unable to access an error message corresponding to your field name E-mail.(xss_clean)
+		$this->form_validation->set_rules('email','E-mail','required|trim|valid_email'); //|	through error Unable to access an error message corresponding to your field name E-mail.(xss_clean)
 		$this->form_validation->set_rules('shirt_size', 'Shrit Shize', 'required|alpha');
 		$this->form_validation->set_rules('stripe_choice[]', 'Stripes', 'required'); //stripe_choice[] is an array
 		$this->form_validation->set_rules('terms', 'Terms and Conditions', 'callback_accept_terms'); //callback_acept_terms calls accept_terms function (bellow) 
@@ -169,6 +171,52 @@ class Home extends CI_Controller {
 	
 	public function create_menber()	
 	{
+		//$this->load->library('form_validation'); //already in autoload
+		//validation rules
+		$this->load->helper('security');
+		
+		$this->form_validation->set_rules('first_name','First Name','trim|required|max_length[40]'); //1st: first_name = exact name of the field name on signup form, 2nd: Name human name to be inserted on the error message, 3rd: validations rules for this form field 
+		$this->form_validation->set_rules('last_name','Last Name','trim|required|max_length[50]');
+		$this->form_validation->set_rules('email','Email Adress','trim|required|valid_email|max_length[50]|callback_check_if_email_exists');
+		$this->form_validation->set_rules('username','Username','trim|required|min_length[4]|max_length[15]|callback_check_if_username_exists');
+		$this->form_validation->set_rules('password','Password','trim|required|min_length[6]|max_length[32]');
+		$this->form_validation->set_rules('password_confirm','Password Confirmation','trim|required|matches[password]');
+		
+		if ($this->form_validation->run() == FALSE ) //didn'validate
+		{
+			$this->load->view('includes/header');
+			$this->load->view('signup_form');
+			$this->load->view('includes/footer');
+		} 
+		else 
+		{
+			$this->load->model('model_membership');
+			if($query = $this->model_membership->create_member())
+			{
+				$data['account_created'] = "Your account has been created!.<br/><br/>";
+				
+				$this->load->view('includes/header');
+				$this->load->view('login_form', $data);
+				$this->load->view('includes/footer');
+			} 
+			else
+			{
+				$this->load->view('includes/header');
+				$this->load->view('login_form');
+				$this->load->view('includes/footer');
+			}
+
+		} //end of else
+	}
+
+	public function check_if_email_exists()
+	{
 		return TRUE;
 	}
+	
+	public function check_if_username_exists()
+	{
+		return TRUE;
+	}
+
 }
